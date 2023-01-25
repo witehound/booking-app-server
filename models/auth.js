@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
 
-const authSchema = mongoose.Schema({});
+const authSchema = new mongoose.Schema({});
 
 export default mongoose.model("auth", authSchema);
