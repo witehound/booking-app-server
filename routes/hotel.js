@@ -14,9 +14,9 @@ router.post("/", createHotel);
 //UPDATE
 router.put("/:id", updateHotel);
 //DELETE
-router.delete("/", () => {});
+router.delete("/:id", deleteHotel);
 //GET
-router.get("/", () => {});
+router.get("/:id", fetchHotel);
 //GETALL
 router.post("/all", () => {});
 
