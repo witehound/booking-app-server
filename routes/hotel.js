@@ -18,6 +18,6 @@ router.delete("/:id", deleteHotel);
 //GET
 router.get("/:id", fetchHotel);
 //GETALL
-router.post("/all", () => {});
+router.get("/", fetchAllHotels);
 
 export default router;

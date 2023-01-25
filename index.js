@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { createMongooseConnect } from "./lib/index.js";
+import { createMongooseConnect, errorHandler } from "./lib/index.js";
 import {
   AuthRouter,
   UserRouter,
@@ -18,6 +18,8 @@ app.use("/api/auth/", AuthRouter);
 app.use("/api/user/", UserRouter);
 app.use("/api/room/", RoomRouter);
 app.use("/api/hotel/", HotelRouter);
+
+app.use(errorHandler);
 
 app.listen(8080, () => {
   console.log("connected to back end.");

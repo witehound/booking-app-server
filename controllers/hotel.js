@@ -1,16 +1,16 @@
 import { HotelModel } from "../models/index.js";
 
-const createHotel = async (req, res) => {
+const createHotel = async (req, res, next) => {
   const newHotel = new HotelModel(req.body);
   try {
     const savedHotel = await newHotel.save();
     res.status(200).json(savedHotel);
   } catch (error) {
-    res.status(500).json(err);
+    next(error);
   }
 };
 
-const updateHotel = async (req, res) => {
+const updateHotel = async (req, res, next) => {
   try {
     const updatedHotel = await HotelModel.findByIdAndUpdate(
       req.params.id,
@@ -23,34 +23,34 @@ const updateHotel = async (req, res) => {
     );
     res.status(200).json(updatedHotel);
   } catch (error) {
-    res.status(500).json(err);
+    next(error);
   }
 };
 
-const deleteHotel = async (req, res) => {
+const deleteHotel = async (req, res, next) => {
   try {
     await HotelModel.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: `Deleted hotel ${req.params.id}` });
   } catch (error) {
-    res.status(500).json(err);
+    next(error);
   }
 };
 
-const fetchHotel = async (req, res) => {
+const fetchHotel = async (req, res, next) => {
   try {
-    const hotel = await HotelModel.findById(req.body.id);
+    const hotel = await HotelModel.findById(req.params.id);
     res.status(200).json(hotel);
   } catch (error) {
-    res.status(500).json(err);
+    next(error);
   }
 };
 
-const fetchAllHotels = async (req, res) => {
+const fetchAllHotels = async (req, res, next) => {
   try {
     const allHotels = await HotelModel.find();
     res.status(200).json(allHotels);
   } catch (error) {
-    res.status(500).json(err);
+    next(error);
   }
 };
 
