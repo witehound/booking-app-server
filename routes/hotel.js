@@ -10,9 +10,9 @@ import {
 const router = express.Router();
 
 //CREATE
-router.post("/", () => {});
+router.post("/", createHotel);
 //UPDATE
-router.put("/", () => {});
+router.put("/:id", updateHotel);
 //DELETE
 router.delete("/", () => {});
 //GET

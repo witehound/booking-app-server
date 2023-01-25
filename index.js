@@ -11,6 +11,7 @@ import {
 const app = express();
 dotenv.config();
 createMongooseConnect();
+app.use(express.json());
 
 //middlewarees
 app.use("/api/auth/", AuthRouter);
@@ -18,6 +19,6 @@ app.use("/api/user/", UserRouter);
 app.use("/api/room/", RoomRouter);
 app.use("/api/hotel/", HotelRouter);
 
-app.listen(9898, () => {
+app.listen(8080, () => {
   console.log("connected to back end.");
 });
