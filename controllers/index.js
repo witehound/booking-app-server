@@ -4,6 +4,7 @@ import {
   deleteHotel,
   fetchHotel,
   fetchAllHotels,
+  fetchCountByCity,
 } from "./hotel.js";
 
 import { updateUser, deleteUser, fetchUser, fetchAllUsers } from "./user.js";
@@ -24,6 +25,7 @@ export {
   deleteHotel,
   fetchHotel,
   fetchAllHotels,
+  fetchCountByCity,
   updateUser,
   deleteUser,
   fetchUser,
