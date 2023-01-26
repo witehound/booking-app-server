@@ -1,17 +1,17 @@
 import { UserModel } from "../models/index.js";
 
-const createUseer = async (req, res, next) => {
-  const newUser = new UserModel(req.body);
-  try {
-    const savedUser = await newUser.save();
-    res.status(200).json(savedUser);
-  } catch (err) {
-    next(err);
-  }
-};
-
 const updateUser = async (req, res, next) => {
   try {
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(updatedUser);
   } catch (err) {
     next(err);
   }
@@ -19,6 +19,8 @@ const updateUser = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
+    await UserModel.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: `Deleted user ${req.params.id}` });
   } catch (err) {
     next(err);
   }
@@ -26,6 +28,8 @@ const deleteUser = async (req, res, next) => {
 
 const fetchUser = async (req, res, next) => {
   try {
+    const user = await UserModel.findById(req.params.id);
+    res.status(200).json(user);
   } catch (err) {
     next(err);
   }
@@ -33,11 +37,11 @@ const fetchUser = async (req, res, next) => {
 
 const fetchAllUsers = async (req, res, next) => {
   try {
-    const allHotels = await HotelModel.find();
-    res.status(200).json(allHotels);
+    const allUsers = await UserModel.find();
+    res.status(200).json(allUsers);
   } catch (err) {
     next(err);
   }
 };
 
-export { createUseer, updateUser, deleteUser, fetchUser, fetchAllUsers };
+export { updateUser, deleteUser, fetchUser, fetchAllUsers };

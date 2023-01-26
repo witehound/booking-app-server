@@ -6,13 +6,7 @@ import {
   fetchAllHotels,
 } from "./hotel.js";
 
-import {
-  createUseer,
-  updateUser,
-  deleteUser,
-  fetchUser,
-  fetchAllUsers,
-} from "./user.js";
+import { updateUser, deleteUser, fetchUser, fetchAllUsers } from "./user.js";
 
 import { register, login } from "./auth.js";
 
@@ -22,7 +16,6 @@ export {
   deleteHotel,
   fetchHotel,
   fetchAllHotels,
-  createUseer,
   updateUser,
   deleteUser,
   fetchUser,
