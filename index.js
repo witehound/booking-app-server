@@ -8,11 +8,13 @@ import {
   HotelRouter,
 } from "./routes/index.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
 createMongooseConnect();
 
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
