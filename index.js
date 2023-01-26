@@ -7,10 +7,13 @@ import {
   RoomRouter,
   HotelRouter,
 } from "./routes/index.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 dotenv.config();
 createMongooseConnect();
+
+app.use(cookieParser());
 app.use(express.json());
 
 //middlewarees

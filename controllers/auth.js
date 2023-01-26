@@ -1,6 +1,10 @@
 import { UserModel } from "../models/index.js";
 import { hashPassword } from "../lib/index.js";
-import { createError, compareHashPassword } from "../lib/index.js";
+import {
+  createError,
+  compareHashPassword,
+  createJwtToken,
+} from "../lib/index.js";
 
 const register = async (req, res, next) => {
   const { userName, email, password } = req.body;
@@ -31,7 +35,13 @@ const login = async (req, res, next) => {
       next(createError(400, "Wrong password or username"));
     }
     const { password, isAdmin, ...otherDetails } = user._doc;
-    res.status(200).json({ ...otherDetails });
+    const token = createJwtToken(user._id, user.isAdmin);
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json({ ...otherDetails });
   } catch (error) {
     next(error);
   }
