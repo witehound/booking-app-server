@@ -6,6 +6,7 @@ import {
   fetchHotel,
   fetchAllHotels,
   fetchCountByCity,
+  fetchCountByType,
 } from "../controllers/index.js";
 import { verifyAdmin } from "../lib/index.js";
 
@@ -24,6 +25,6 @@ router.get("/", fetchAllHotels);
 //BYCITY
 router.get("/countByCity", fetchCountByCity);
 //BYTYPE
-router.get("/countByType", fetchAllHotels);
+router.get("/countByType", fetchCountByType);
 
 export default router;
