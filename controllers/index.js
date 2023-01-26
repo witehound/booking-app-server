@@ -14,6 +14,8 @@ import {
   fetchAllUsers,
 } from "./user.js";
 
+import { register, login } from "./auth.js";
+
 export {
   createHotel,
   updateHotel,
@@ -25,4 +27,6 @@ export {
   deleteUser,
   fetchUser,
   fetchAllUsers,
+  register,
+  login,
 };
