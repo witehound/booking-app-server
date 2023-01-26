@@ -5,16 +5,17 @@ import {
   fetchUser,
   fetchAllUsers,
 } from "../controllers/index.js";
+import { verifyUser, verifyAdmin } from "../lib/index.js";
 
 const router = express.Router();
 
 //UPDATE
-router.put("/:id", updateUser);
+router.put("/:id", verifyUser, updateUser);
 //DELETE
-router.delete("/:id", deleteUser);
+router.delete("/:id", verifyUser, deleteUser);
 //GET
-router.get("/:id", fetchUser);
+router.get("/:id", verifyUser, fetchUser);
 //GETALL
-router.get("/", fetchAllUsers);
+router.get("/", verifyAdmin, fetchAllUsers);
 
 export default router;

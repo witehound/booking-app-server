@@ -1,11 +1,10 @@
 import express from "express";
 import { register, login } from "../controllers/index.js";
-import { verifyUser } from "../lib/index.js";
 
 const router = express.Router();
 
 //CREATE
-router.post("/register/:id", verifyUser, register);
+router.post("/register/:id", register);
 //SIGNIN
 router.post("/login", login);
 
