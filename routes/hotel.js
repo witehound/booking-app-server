@@ -6,7 +6,7 @@ import {
   fetchHotel,
   fetchAllHotels,
 } from "../controllers/index.js";
-import { verifyUser, verifyAdmin } from "../lib/index.js";
+import { verifyAdmin } from "../lib/index.js";
 
 const router = express.Router();
 

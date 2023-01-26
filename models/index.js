@@ -1,5 +1,5 @@
-import HomeModel from "./home.js";
+import RoomModel from "./room.js";
 import UserModel from "./user.js";
 import HotelModel from "./hotel.js";
 
-export { HomeModel, HotelModel, UserModel };
+export { RoomModel, HotelModel, UserModel };

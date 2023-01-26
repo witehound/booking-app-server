@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const homeSchema = new mongoose.Schema(
+const roomSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -32,4 +32,4 @@ const homeSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("home", homeSchema);
+export default mongoose.model("home", roomSchema);
