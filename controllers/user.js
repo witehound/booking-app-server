@@ -11,6 +11,7 @@ const updateUser = async (req, res, next) => {
         new: true,
       }
     );
+
     res.status(200).json(updatedUser);
   } catch (err) {
     next(err);

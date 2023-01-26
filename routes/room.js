@@ -11,7 +11,7 @@ import { verifyAdmin } from "../lib/index.js";
 const router = express.Router();
 
 //CREATE
-router.post("/", verifyAdmin, createRoom);
+router.post("/:hotelId", verifyAdmin, createRoom);
 //UPDATE
 router.put("/:id", verifyAdmin, updateRoom);
 //DELETE
