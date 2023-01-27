@@ -7,6 +7,7 @@ import {
   fetchAllHotels,
   fetchCountByCity,
   fetchCountByType,
+  geHotelRooms,
 } from "../controllers/index.js";
 import { verifyAdmin } from "../lib/index.js";
 
@@ -26,5 +27,8 @@ router.get("/", fetchAllHotels);
 router.get("/countByCity", fetchCountByCity);
 //BYTYPE
 router.get("/countByType", fetchCountByType);
+
+//ooms
+router.get("/rooms/:id", geHotelRooms);
 
 export default router;

@@ -1,4 +1,4 @@
-import { HotelModel } from "../models/index.js";
+import { HotelModel, RoomModel } from "../models/index.js";
 
 const createHotel = async (req, res, next) => {
   const newHotel = new HotelModel(req.body);
@@ -96,6 +96,21 @@ const fetchCountByType = async (req, res, next) => {
   }
 };
 
+const geHotelRooms = async (req, res, next) => {
+  try {
+    const hotelRooms = await HotelModel.findById(req.params.id);
+    console.log(hotelRooms.rooms);
+    const rooms = await Promise.all(
+      hotelRooms.rooms.map((room) => {
+        return RoomModel.findById(room);
+      })
+    );
+    res.status(200).json(rooms);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export {
   createHotel,
   updateHotel,
@@ -104,4 +119,5 @@ export {
   fetchAllHotels,
   fetchCountByCity,
   fetchCountByType,
+  geHotelRooms,
 };
