@@ -19,6 +19,7 @@ import {
   fetchRoom,
   fetchRooms,
   deleteRoom,
+  updateRoomAvailability,
 } from "./room.js";
 
 export {
@@ -41,4 +42,5 @@ export {
   fetchRoom,
   fetchRooms,
   deleteRoom,
+  updateRoomAvailability,
 };

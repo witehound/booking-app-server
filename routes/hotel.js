@@ -9,7 +9,7 @@ import {
   fetchCountByType,
   geHotelRooms,
 } from "../controllers/index.js";
-import { verifyAdmin } from "../lib/index.js";
+import { verifyAdmin, verifyUser } from "../lib/index.js";
 
 const router = express.Router();
 
@@ -17,6 +17,7 @@ const router = express.Router();
 router.post("/", verifyAdmin, createHotel);
 //UPDATE
 router.put("/:id", verifyAdmin, updateHotel);
+
 //DELETE
 router.delete("/:id", verifyAdmin, deleteHotel);
 //GET
@@ -27,8 +28,7 @@ router.get("/", fetchAllHotels);
 router.get("/countByCity", fetchCountByCity);
 //BYTYPE
 router.get("/countByType", fetchCountByType);
-
-//ooms
+//ROOMS
 router.get("/rooms/:id", geHotelRooms);
 
 export default router;

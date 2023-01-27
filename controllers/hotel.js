@@ -99,7 +99,6 @@ const fetchCountByType = async (req, res, next) => {
 const geHotelRooms = async (req, res, next) => {
   try {
     const hotelRooms = await HotelModel.findById(req.params.id);
-    console.log(hotelRooms.rooms);
     const rooms = await Promise.all(
       hotelRooms.rooms.map((room) => {
         return RoomModel.findById(room);
