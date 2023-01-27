@@ -17,7 +17,7 @@ const register = async (req, res, next) => {
     const savedUser = await newUser.save();
     res.status(200).json({ message: `user has beeen created` });
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
 
@@ -25,14 +25,14 @@ const login = async (req, res, next) => {
   try {
     const user = await UserModel.findOne({ userName: req.body.userName });
     if (!user) {
-      next(createError(404, "User not found"));
+      return next(createError(404, "User not found"));
     }
     const isPasswordValid = await compareHashPassword(
       req.body.password,
       user.password
     );
     if (!isPasswordValid) {
-      next(createError(400, "Wrong password or username"));
+      return next(createError(400, "Wrong password or username"));
     }
     const { password, isAdmin, ...otherDetails } = user._doc;
     const token = createJwtToken(user._id, user.isAdmin);
