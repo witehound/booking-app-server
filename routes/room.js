@@ -7,7 +7,7 @@ import {
   deleteRoom,
   updateRoomAvailability,
 } from "../controllers/index.js";
-import { verifyAdmin, verifyUser } from "../lib/index.js";
+import { verifyAdmin } from "../lib/index.js";
 
 const router = express.Router();
 
