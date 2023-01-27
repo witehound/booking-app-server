@@ -16,7 +16,7 @@ router.post("/:hotelId", verifyAdmin, createRoom);
 //UPDATE
 router.put("/:id", verifyAdmin, updateRoom);
 //UPDATE AVAIL
-router.put("/availability/:id", updateRoomAvailability);
+router.put("/availability/:id/", updateRoomAvailability);
 //DELETE
 router.delete("/:id/:hotelId", verifyAdmin, deleteRoom);
 //GET
