@@ -18,7 +18,10 @@ createMongooseConnect();
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? process.env.CLIENT_URL
+        : "http://localhost:3000",
   })
 );
 
