@@ -23,7 +23,7 @@ const createRoom = async (req, res, next) => {
 const updateRoom = async (req, res, next) => {
   try {
     const updatedRoom = await RoomModel.findByIdAndUpdate(
-      req.params.id,
+      req.params.hotelId,
       {
         $set: req.body,
       },
