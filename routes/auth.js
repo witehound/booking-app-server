@@ -4,7 +4,7 @@ import { register, login } from "../controllers/index.js";
 const router = express.Router();
 
 //CREATE
-router.post("/register/:id", register);
+router.post("/register", register);
 //SIGNIN
 router.post("/login", login);
 

@@ -7,14 +7,14 @@ import {
 } from "../lib/index.js";
 
 const register = async (req, res, next) => {
-  const { userName, email, password } = req.body;
+  const { password } = req.body;
+
   const newUser = new UserModel({
-    userName,
-    email,
+    ...req.body,
     password: hashPassword(password),
   });
   try {
-    const savedUser = await newUser.save();
+    await newUser.save();
     res.status(200).json({ message: `user has beeen created` });
   } catch (error) {
     return next(error);
@@ -38,7 +38,7 @@ const login = async (req, res, next) => {
     const token = createJwtToken(user._id, user.isAdmin);
     res
       .cookie("access_token", token, {
-        httpOnly: true,
+        httpOnly: false,
       })
       .status(200)
       .json({ details: { ...otherDetails }, isAdmin });
